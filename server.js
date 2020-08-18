@@ -5,13 +5,18 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req,res) => {
-	res.send("Hello world");
+app.use(bodyParser.json())
+
+app.get('/', (req, res) => {
+  res.send("Hello World");
 });
 
+const itemRoute = require('./src/routes/items.routes')
+
+app.use('/items', itemRoute)
 
 app.listen(port, () => {
-	console.log(`App is listening on port ${port}`);
+  console.log(`Server is listening on port ${port}`);
 });
