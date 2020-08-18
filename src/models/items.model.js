@@ -18,5 +18,17 @@ Item.create = function (newItem, result) {
 	});
 };
 
+Item.findAll = function (result) {
+	dbConn.query("SELECT * from items", function (err, res){
+	if(err){
+		console.log("error: ", err);
+		result(null,err);
+	}else{
+		console.log("item: ",res)
+		result(null,res)
+		}
+	})
+}
+
 
 module.exports = Item;

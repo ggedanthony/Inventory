@@ -14,3 +14,12 @@ exports.create = function(req, res) {
 		});
 	}
 };
+
+exports.findAll = function(req,res){
+	Item.findAll(function(err,item){
+		if(err)
+			res.send(err);
+			console.log('res', item);
+			res.send(item)
+	});
+};

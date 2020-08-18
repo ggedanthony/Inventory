@@ -4,5 +4,7 @@ const itemController = require('../controllers/items.controller');
 
 router.post('/', itemController.create);
 
+router.get('/', itemController.findAll);
+
 
 module.exports = router;
