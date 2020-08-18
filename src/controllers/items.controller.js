@@ -43,3 +43,11 @@ exports.update = function(req,res){
 		})
 	}
 }
+
+exports.delete = function(req,res){
+	Item.delete(req.params.id, function(err,item){
+		if(err)
+			res.send(err);
+			res.json({error:false, message: "Item successfully deleted"})
+	})
+}

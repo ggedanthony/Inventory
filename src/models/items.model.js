@@ -53,4 +53,15 @@ Item.update = function(id, item, result){
 	})
 }
 
+Item.delete = function(id, result){
+	dbConn.query("DELETE from items where id = ?", id, function(err,res){
+		if(err){
+			console.log("error: ", err);
+			result(null,err);
+		}else{
+			result(null,res)
+		}
+	})
+}
+
 module.exports = Item;
