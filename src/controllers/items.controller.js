@@ -23,3 +23,11 @@ exports.findAll = function(req,res){
 			res.send(item)
 	});
 };
+
+exports.findById = function(req,res){
+	Item.findById(req.params.id, function(err,item){
+		if(err)
+			res.send(err);
+			res.send(item)
+	});
+};

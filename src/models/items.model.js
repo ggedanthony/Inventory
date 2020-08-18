@@ -30,5 +30,16 @@ Item.findAll = function (result) {
 	})
 }
 
+Item.findById = function(id, result){
+	dbConn.query("SELECT * from items where id = ? ", id, function(err,res){
+		if(err){
+			console.log("error: ", err);
+			result(null, err);
+		}else{
+			console.log("item: ", res)
+			result(null,res)
+		}
+	})
+}
 
 module.exports = Item;
