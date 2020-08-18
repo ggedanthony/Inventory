@@ -42,4 +42,15 @@ Item.findById = function(id, result){
 	})
 }
 
+Item.update = function(id, item, result){
+	dbConn.query("UPDATE items SET name=?,quantity=?,amount=? where id = ?", [item.name,item.quantity,item.amount, id], function (err, res){
+		if(err){
+			console.log("error: ", err);
+			result(null, err);
+		}else{
+			result(null, res);
+		}
+	})
+}
+
 module.exports = Item;

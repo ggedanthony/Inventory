@@ -8,4 +8,6 @@ router.get('/', itemController.findAll);
 
 router.get('/:id', itemController.findById);
 
+router.put('/:id', itemController.update);
+
 module.exports = router;

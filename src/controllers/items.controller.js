@@ -31,3 +31,15 @@ exports.findById = function(req,res){
 			res.send(item)
 	});
 };
+
+exports.update = function(req,res){
+	if(req.body.constructor == Object && Object.keys(req.body).length === 0){
+		res.status(400).send({error:true, message: 'Please provide all requred field'});
+	}else{
+		Item.update(req.params.id, new Item(req.body), function(err,item){
+		if(err)
+			res.send(err);
+			res.json({error:false, message: 'Item successfully updated'});	
+		})
+	}
+}
